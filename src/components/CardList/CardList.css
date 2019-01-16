@@ -1,4 +1,5 @@
 ul {
+  background-color: lightgray;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
