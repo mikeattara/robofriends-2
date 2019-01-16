@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import CardList from "./CardList/CardList";
 import Footer from "./Footer/Footer";
 import { robots } from "../data/robots";
+import "./App.css";
 
 class App extends Component {
   constructor() {
