@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import Header from "./Header/Header";
 import CardList from "./CardList/CardList";
 import Footer from "./Footer/Footer";
 import { robots } from "../data/robots";
 
-export default () => {
-  // const [robots, setRobots] = useState(robots);
-  // const [searchField, setSearchField] = useState("");
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      robots,
+      searchField: ""
+    };
+  }
 
-  return (
-    <>
-      <Header />
-      <main>
-        <CardList robots={robots} />
-      </main>
-      <Footer />
-    </>
-  );
-};
+  onInputChange = (event) => this.setState({searchField: {event.target.value}});
+
+  render() {
+    return (
+      <>
+        <Header />
+        <main>
+          <CardList robots={this.state.robots} />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+}
+
+export default App;
