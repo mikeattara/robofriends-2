@@ -3,7 +3,11 @@ import React from "react";
 const Footer = () => (
   <footer className="tc">
     <p>
-      Made with <span /> by 💛
+      Made with{" "}
+      <span role="img" aria-label="love">
+        💛
+      </span>{" "}
+      by{" "}
       <a
         target="_blank"
         rel="noopener noreferrer"
