@@ -3,7 +3,7 @@ import SearchBox from "../SearchBox/SearchBox";
 
 const Header = ({ searchChange }) => (
   <header className="tc">
-    <h1>Robofriends</h1>
+    <h1 className="f2">Robofriends</h1>
     <SearchBox searchChange={searchChange} />
   </header>
 );
