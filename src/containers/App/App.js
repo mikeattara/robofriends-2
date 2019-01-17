@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "./Header/Header";
-import CardList from "./CardList/CardList";
-import Footer from "./Footer/Footer";
-import { robots } from "../data/robots";
+import Header from "../../components/Header/Header";
+import CardList from "../../components/CardList/CardList";
+import Footer from "../../components/Footer/Footer";
+import { robots } from "../../data/robots";
 import "./App.css";
 
 class App extends Component {
