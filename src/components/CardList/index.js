@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../Card/Card";
+import Card from "../Card";
 import "./CardList.css";
 
 const CardList = ({ robots }) => {

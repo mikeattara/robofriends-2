@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from "../../components/Header/Header";
-import CardList from "../../components/CardList/CardList";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header";
+import CardList from "../../components/CardList";
+import Footer from "../../components/Footer";
 import { robots } from "../../data/robots";
 import "./App.css";
 
