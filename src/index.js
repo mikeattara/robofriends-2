@@ -5,5 +5,7 @@ import App from "./containers/App";
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(<App />, rootElement);
 serviceWorker.unregister();

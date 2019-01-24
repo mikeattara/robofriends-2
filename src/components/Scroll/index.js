@@ -1,3 +1,1 @@
-import React from "react";
-
-export const Scroll = ({ children }) => <div>{children}</div>;
+export * from "./Scroll";
