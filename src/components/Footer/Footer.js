@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => (
+export const Footer = () => (
   <footer className="tc">
     <p>
       Made with{" "}
@@ -18,5 +18,3 @@ const Footer = () => (
     </p>
   </footer>
 );
-
-export default Footer;

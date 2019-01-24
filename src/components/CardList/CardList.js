@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../Card";
+import { Card } from "../Card";
 import "./CardList.css";
 
-const CardList = ({ robots }) => {
+export const CardList = ({ robots }) => {
   return (
     <ul>
       {robots.map(robot => (
@@ -18,5 +18,3 @@ const CardList = ({ robots }) => {
     </ul>
   );
 };
-
-export default CardList;
