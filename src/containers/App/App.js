@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import { Header } from "../../components/Header";
 import { CardList } from "../../components/CardList";
 import { Footer } from "../../components/Footer";
-import { robots } from "../../data/robots";
 import "./App.css";
 
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      robots: robots,
+      robots: [],
       searchField: ""
     };
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users/")
+      .then(res => res.json())
+      .then(robots => this.setState({ robots }));
   }
 
   onSearchChange = event => this.setState({ searchField: event.target.value });
