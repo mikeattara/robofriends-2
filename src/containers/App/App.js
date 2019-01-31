@@ -3,6 +3,7 @@ import { Header } from "../../components/Header";
 import { Scroll } from "../../components/Scroll";
 import { CardList } from "../../components/CardList";
 import { Footer } from "../../components/Footer";
+import { ErrorBoundary } from "../../components/ErrorBoundary";
 import "./App.css";
 
 export class App extends Component {
@@ -34,7 +35,9 @@ export class App extends Component {
         <Header searchChange={this.onSearchChange} />
         <main>
           <Scroll>
-            <CardList robots={robotsArray} />
+            <ErrorBoundary>
+              <CardList robots={robotsArray} />
+            </ErrorBoundary>
           </Scroll>
         </main>
         <Footer />
