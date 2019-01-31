@@ -27,7 +27,9 @@ export class App extends Component {
       robot.name.toLowerCase().includes(this.state.searchField.toLowerCase())
     );
 
-    return (
+    return robotsArray.length === 0 ? (
+      <h1>Loading</h1>
+    ) : (
       <>
         <Header searchChange={this.onSearchChange} />
         <main>
