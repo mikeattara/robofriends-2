@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Header } from "../../components/Header";
+import { Scroll } from "../../components/Scroll";
 import { CardList } from "../../components/CardList";
 import { Footer } from "../../components/Footer";
 import "./App.css";
@@ -30,7 +31,9 @@ export class App extends Component {
       <>
         <Header searchChange={this.onSearchChange} />
         <main>
-          <CardList robots={robotsArray} />
+          <Scroll>
+            <CardList robots={robotsArray} />
+          </Scroll>
         </main>
         <Footer />
       </>
