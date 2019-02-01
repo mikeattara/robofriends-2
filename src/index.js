@@ -25,4 +25,4 @@ ReactDOM.render(
   </Provider>,
   rootElement
 );
-serviceWorker.unregister();
+serviceWorker.register();
