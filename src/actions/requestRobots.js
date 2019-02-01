@@ -14,10 +14,9 @@ export const requestRobots = () => dispatch => {
         payload: data
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
-        type: REQUEST_ROBOTS_FAILED,
-        payload: err
+        type: REQUEST_ROBOTS_FAILED
       });
     });
 };
