@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Header } from "../../components/Header";
 import { Scroll } from "../../components/Scroll";
 import { CardList } from "../../components/CardList";
@@ -6,12 +7,20 @@ import { Footer } from "../../components/Footer";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
 import "./App.css";
 
-export class App extends Component {
+import { setSearchField } from "../../actions";
+
+const mapStateToProps = state => ({
+  searchField: state.searchField
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSearchChange: event => dispatch(setSearchField(event.target.value))
+});
+class App extends Component {
   constructor() {
     super();
     this.state = {
-      robots: [],
-      searchField: ""
+      robots: []
     };
   }
 
@@ -21,18 +30,16 @@ export class App extends Component {
       .then(robots => this.setState({ robots }));
   }
 
-  onSearchChange = event => this.setState({ searchField: event.target.value });
-
   render() {
-    const robotsArray = this.state.robots.filter(robot =>
-      robot.name.toLowerCase().includes(this.state.searchField.toLowerCase())
+    const { robots } = this.state;
+    const { searchField } = this.props;
+    const robotsArray = robots.filter(robot =>
+      robot.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
-    return robotsArray.length === 0 ? (
-      <h1>Loading</h1>
-    ) : (
+    return (
       <>
-        <Header searchChange={this.onSearchChange} />
+        <Header searchChange={this.props.onSearchChange} />
         <main>
           <Scroll>
             <ErrorBoundary>
@@ -45,3 +52,8 @@ export class App extends Component {
     );
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
