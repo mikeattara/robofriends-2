@@ -7,48 +7,54 @@ import { Footer } from "../../components/Footer";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
 import "./App.css";
 
-import { setSearchField } from "../../actions";
+import { setSearchField, requestRobots } from "../../actions";
 
 const mapStateToProps = state => ({
-  searchField: state.searchField
+  searchField: state.searchRobots.searchField,
+  robots: state.requestRobots.robots,
+  isPending: state.requestRobots.isPending,
+  error: state.requestRobots.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSearchChange: event => dispatch(setSearchField(event.target.value))
+  onSearchChange: event => dispatch(setSearchField(event.target.value)),
+  onRequestRobots: () => dispatch(requestRobots())
 });
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: []
-    };
-  }
-
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users/")
-      .then(res => res.json())
-      .then(robots => this.setState({ robots }));
+    this.props.onRequestRobots();
   }
 
   render() {
-    const { robots } = this.state;
-    const { searchField } = this.props;
+    const {
+      searchField,
+      robots,
+      onSearchChange,
+      isPending,
+      error
+    } = this.props;
     const robotsArray = robots.filter(robot =>
       robot.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
-    return (
+    return !isPending ? (
       <>
-        <Header searchChange={this.props.onSearchChange} />
+        <Header searchChange={onSearchChange} />
         <main>
           <Scroll>
             <ErrorBoundary>
-              <CardList robots={robotsArray} />
+              {!error ? (
+                <CardList robots={robotsArray} />
+              ) : (
+                <h1 className="tc">Error loading robots</h1>
+              )}
             </ErrorBoundary>
           </Scroll>
         </main>
         <Footer />
       </>
+    ) : (
+      <h1>Loading</h1>
     );
   }
 }
