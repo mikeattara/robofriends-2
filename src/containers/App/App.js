@@ -54,7 +54,7 @@ class App extends Component {
         <Footer />
       </>
     ) : (
-      <h1 className="tc">Loading</h1>
+      <h1 className="tc">Loading...</h1>
     );
   }
 }
